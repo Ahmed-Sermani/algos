@@ -17,7 +17,7 @@ type MatrixAccessorInt interface {
 
 type MatrixMutatorInt interface {
 	Matrix
-	// val, i, j
+	// SetInt val, i, j
 	SetInt(int, int, int)
 }
 
@@ -42,7 +42,7 @@ func (m IntMatrix) SetInt(val, i, j int) {
 	m[i][j] = val
 }
 
-// initialize new matrix with the specified size
+// NewIntMatrix initialize new matrix with the specified size
 func NewIntMatrix(rows, cols int) IntMatrix {
 	var m IntMatrix
 	for rows != 0 {

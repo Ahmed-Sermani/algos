@@ -1,6 +1,6 @@
 package matrices
 
-// verify that AB = C using Freivalds' algorithm
+// IntVerifyMultiplication verify that AB = C using Freivalds' algorithm
 // https://en.wikipedia.org/wiki/Freivalds%27_algorithm
 func IntVerifyMultiplication(A, B, C MatrixAccessorInt) bool {
 	if invalidSquaresAndEqualSizeMtx(A, B) {
