@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/Ahmed-Sermani/algos/graph"
+	"github.com/Ahmed-Sermani/algos/randomized/graph"
 )
 
 func graphFromFile(name string) *graph.Graph {

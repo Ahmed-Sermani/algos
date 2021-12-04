@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/Ahmed-Sermani/algos/matrices"
+	"github.com/Ahmed-Sermani/algos/randomized/matrices"
 )
 
 func TestIntMatrix(t *testing.T) {

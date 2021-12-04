@@ -3,7 +3,7 @@ package matrices_test
 import (
 	"testing"
 
-	"github.com/Ahmed-Sermani/algos/matrices"
+	"github.com/Ahmed-Sermani/algos/randomized/matrices"
 )
 
 func TestVerifyMultiplication(t *testing.T) {
