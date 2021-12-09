@@ -6,7 +6,7 @@ on:
     branches:
       - main
 
-name: run tests
+name: run CI
 jobs:
   lint:
     runs-on: ubuntu-latest
