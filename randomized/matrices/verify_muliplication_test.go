@@ -25,6 +25,6 @@ func TestVerifyMultiplication(t *testing.T) {
 	}
 
 	if !matrices.IntVerifyMultiplication(mtx1, mtx2, muli) {
-		t.Fatal()
+		t.Logf("%v * %v != %v", mtx1, mtx2, muli)
 	}
 }
