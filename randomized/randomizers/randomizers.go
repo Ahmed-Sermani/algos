@@ -73,6 +73,17 @@ func Rand75() int {
 	return rand50() | rand50() //nolint:govet
 }
 
+// Rand3 given rand50 that return 1 or 0 with equal probability,
+// return 0, 1, 2 with equal probability.
+func Rand3() int {
+	// this gives 0, 1, 2, 3 with equal probability
+	exp := 2*rand50() + rand50()
+	if exp == 3 {
+		return Rand3()
+	}
+	return exp
+}
+
 func rand50() int {
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 	return r.Intn(2)

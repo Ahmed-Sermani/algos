@@ -29,3 +29,9 @@ func TestRand75(t *testing.T) {
 	res := Rand75()
 	assert.Contains(t, []int{0, 1}, res)
 }
+
+func TestRand50(t *testing.T) {
+	t.Parallel()
+	res := Rand3()
+	assert.Contains(t, []int{0, 1, 2}, res)
+}
