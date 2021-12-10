@@ -23,3 +23,9 @@ func TestGetRandomWithDistribution(t *testing.T) {
 	assert.Contains(t, arr, res)
 
 }
+
+func TestRand75(t *testing.T) {
+	t.Parallel()
+	res := Rand75()
+	assert.Contains(t, []int{0, 1}, res)
+}

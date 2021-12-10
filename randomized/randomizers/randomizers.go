@@ -64,3 +64,15 @@ func findCeil(arr []int, value, low, high int) int {
 	}
 	return -1
 }
+
+// Rand75 given rand50 that return 1 or 0 with equal probability,
+// return 1 with probability 75% and 0 with probability 25%.
+func Rand75() int {
+	// OR gives 1 with 75% and 0 with 25%
+	return rand50() | rand50()
+}
+
+func rand50() int {
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+	return r.Intn(2)
+}
