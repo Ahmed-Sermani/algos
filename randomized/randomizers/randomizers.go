@@ -67,9 +67,10 @@ func findCeil(arr []int, value, low, high int) int {
 
 // Rand75 given rand50 that return 1 or 0 with equal probability,
 // return 1 with probability 75% and 0 with probability 25%.
+//nolint
 func Rand75() int {
 	// OR gives 1 with 75% and 0 with 25%
-	return rand50() | rand50()
+	return rand50() | rand50() //nolint:govet
 }
 
 func rand50() int {
