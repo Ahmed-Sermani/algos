@@ -3,6 +3,7 @@ package array
 import "testing"
 
 func TestResviorSampling(t *testing.T) {
+	t.Parallel()
 	dataCh := make(chan int, 100)
 	go func() {
 		for i := 0; i < 10000; i++ {

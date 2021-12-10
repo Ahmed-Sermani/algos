@@ -7,7 +7,7 @@ import (
 )
 
 func TestQuickSelect(t *testing.T) {
-	// t.Parallel()
+	t.Parallel()
 	for _, test := range []struct {
 		name string
 		data []int
@@ -52,7 +52,7 @@ func TestQuickSelect(t *testing.T) {
 		},
 	} {
 		t.Run(test.name, func(t *testing.T) {
-			// t.Parallel()
+			t.Parallel()
 			got := array.QuickSelect(test.data, test.k)
 			if got != test.want {
 				t.Errorf("got %d, want %d", got, test.want)
