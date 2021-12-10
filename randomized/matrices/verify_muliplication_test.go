@@ -7,6 +7,7 @@ import (
 )
 
 func TestVerifyMultiplication(t *testing.T) {
+	t.Parallel()
 	mtx1 := matrices.IntMatrix{
 		{1, 2, 1},
 		{2, 3, 4},

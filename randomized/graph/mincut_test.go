@@ -31,6 +31,7 @@ func graphFromFile(name string) *graph.Graph {
 }
 
 func TestMinCutShort(t *testing.T) {
+	t.Parallel()
 	g := graph.New()
 	g.AddEdge(0, 1)
 	g.AddEdge(0, 2)
@@ -47,6 +48,7 @@ func TestMinCutShort(t *testing.T) {
 }
 
 func TestMinCutLong(t *testing.T) {
+	t.Parallel()
 	g := graphFromFile("testdata/inputLong.txt")
 	graph.Karger(g)
 }

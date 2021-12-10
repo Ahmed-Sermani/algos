@@ -8,6 +8,7 @@ import (
 )
 
 func TestIntMatrix(t *testing.T) {
+	t.Parallel()
 	mtx := matrices.NewIntMatrix(3, 3)
 	t.Run("Test Init", func(t *testing.T) {
 		if len(mtx) != 3 && mtx.RowsLen() != 3 {
@@ -37,6 +38,7 @@ func TestIntMatrix(t *testing.T) {
 }
 
 func TestIntMatrixMultiplication(t *testing.T) {
+	t.Parallel()
 	mtx1 := matrices.IntMatrix{
 		{1, 2, 1},
 		{2, 3, 4},
@@ -60,6 +62,7 @@ func TestIntMatrixMultiplication(t *testing.T) {
 }
 
 func TestEquality(t *testing.T) {
+	t.Parallel()
 	tests := []struct {
 		mtx1  matrices.IntMatrix
 		mtx2  matrices.IntMatrix

@@ -5,8 +5,6 @@ import (
 	"time"
 )
 
-var r = rand.New(rand.NewSource(time.Now().UnixNano()))
-
 // given a function foo that returns 1-3 with equal probability,
 // write a function that returns 1-8 with equal probability
 // the idea is to we want a way to map numbers of 1-3 to numbers 1-(any mulipable of 8 "8, 16, 24") to have
@@ -22,6 +20,7 @@ func MappingProbablities() int {
 	return MappingProbablities()
 }
 func foo() int {
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 	return 1 + r.Intn(3)
 }
 
@@ -41,12 +40,14 @@ func MappingProbablities2() int {
 }
 
 func foo2() int {
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 	d := [...]int{1, 1, 0, 1, 0, 1, 0, 0, 1, 1}
 	return d[r.Intn(len(d))]
 }
 
 // given a slice of intergers shuffle the slice in place with O(n) time complexity
 func Shuffle(slice []int) []int {
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 	slc := make([]int, len(slice))
 	copy(slc, slice)
 	for i := len(slc) - 1; i > 0; i-- {
