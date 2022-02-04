@@ -63,7 +63,3 @@ func left(i int) int {
 func right(i int) int {
 	return (i << 1) + 2
 }
-
-func parent(i int) int {
-	return (i - 1) >> 1
-}
