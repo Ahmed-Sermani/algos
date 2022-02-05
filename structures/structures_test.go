@@ -98,4 +98,8 @@ func TestPriorityQueue(t *testing.T) {
 	if !reflect.DeepEqual(pq.h.store[:7], []int{11, 10, 10, 4, 1, 6, 3}) {
 		t.Fail()
 	}
+	pq.Insert(5)
+	if pq.h.store[3] != 5 {
+		t.Fail()
+	}
 }

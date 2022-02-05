@@ -1,5 +1,7 @@
 package structures
 
+import "math"
+
 type PriorityQueue struct {
 	h *Heap
 }
@@ -30,4 +32,14 @@ func (q *PriorityQueue) IncreaseKey(i, k int) {
 	}
 	q.h.store[i] = k
 	q.h.UpHeapify(i)
+}
+
+func (q *PriorityQueue) Insert(key int) {
+	q.h.size++
+	if len(q.h.store) < q.h.size {
+		q.h.store = append(q.h.store, math.MinInt)
+	} else {
+		q.h.store[q.h.size-1] = math.MinInt
+	}
+	q.IncreaseKey(q.h.size-1, key)
 }
