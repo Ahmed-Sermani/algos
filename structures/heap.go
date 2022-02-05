@@ -37,6 +37,13 @@ func (h *Heap) MaxHeapify(i int) {
 	}
 }
 
+func (h *Heap) UpHeapify(i int) {
+	for i > 0 && h.store[i] > h.store[parent(i)] {
+		h.swap(i, parent(i))
+		i = parent(i)
+	}
+}
+
 func (h *Heap) PopRoot() int {
 	if h.IsEmpty() {
 		panic("heap is empty")
@@ -62,4 +69,8 @@ func left(i int) int {
 
 func right(i int) int {
 	return (i << 1) + 2
+}
+
+func parent(i int) int {
+	return (i - 1) >> 1
 }
