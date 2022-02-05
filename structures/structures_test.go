@@ -68,3 +68,34 @@ func TestHeapPopRoot(t *testing.T) {
 		}
 	}
 }
+
+func TestPriorityQueue(t *testing.T) {
+	pq := NewPriorityQueue([]int{20, 10, 10, 4, 5, 6, 3, 1})
+	if m := pq.Max(); m != 20 {
+		t.Logf("%d != %d", m, 20)
+		t.Fail()
+	}
+	if m := pq.ExtractMax(); m != 20 {
+		t.Fail()
+	}
+	if !reflect.DeepEqual(pq.h.store[:7], []int{10, 5, 10, 4, 1, 6, 3}) {
+		t.Fail()
+	}
+	if pq.h.size != 7 {
+		t.Fail()
+	}
+	f := func() {
+		defer func() {
+			if r := recover(); r == nil {
+				t.Log("panic expected")
+				t.Fail()
+			}
+		}()
+		pq.IncreaseKey(0, 1)
+	}
+	f()
+	pq.IncreaseKey(1, 11)
+	if !reflect.DeepEqual(pq.h.store[:7], []int{11, 10, 10, 4, 1, 6, 3}) {
+		t.Fail()
+	}
+}
