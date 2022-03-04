@@ -9,6 +9,7 @@ on:
 name: run CI
 jobs:
   lint:
+    if: ${{ false }}  # disable for now. golangci-lint-action doesn't support Go 1.18 yet
     runs-on: ubuntu-latest
     steps:
       - name: Install Go
