@@ -3,6 +3,8 @@ package structures
 import (
 	"reflect"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestMaxHeapify(t *testing.T) {
@@ -102,4 +104,13 @@ func TestPriorityQueue(t *testing.T) {
 	if pq.h.store[3] != 5 {
 		t.Fail()
 	}
+}
+
+func TestStack(t *testing.T) {
+	stack := NewStack[int]()
+	stack.Push(1)
+	stack.Push(2)
+	assert.Equal(t, 2, stack.Pop())
+	assert.Equal(t, 1, stack.Pop())
+	assert.Panics(t, func() { stack.Pop() })
 }
