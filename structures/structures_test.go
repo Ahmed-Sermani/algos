@@ -114,3 +114,19 @@ func TestStack(t *testing.T) {
 	assert.Equal(t, 1, stack.Pop())
 	assert.Panics(t, func() { stack.Pop() })
 }
+
+func TestQueue(t *testing.T) {
+	queue := NewQueue[string](4)
+	queue.Enqueue("1")
+	queue.Enqueue("2")
+	assert.Equal(t, "1", queue.Dequeue())
+	queue.Enqueue("3")
+	queue.Enqueue("4")
+	queue.Enqueue("5")
+	assert.Panics(t, func() { queue.Enqueue("6") })
+	assert.Equal(t, "2", queue.Dequeue())
+	assert.Equal(t, "3", queue.Dequeue())
+	assert.Equal(t, "4", queue.Dequeue())
+	assert.Equal(t, "5", queue.Dequeue())
+	assert.Panics(t, func() { queue.Dequeue() })
+}
