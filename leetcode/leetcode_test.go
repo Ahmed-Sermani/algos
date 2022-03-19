@@ -51,3 +51,21 @@ func TestDisappearingNumbers(t *testing.T) {
 		assert.Equal(t, test.out, leetcode.FindDisappearedNumbers(test.in))
 	}
 }
+
+func TestClimbStairs(t *testing.T) {
+	tests := []struct {
+		in  int
+		out int
+	}{
+		{1, 1},
+		{2, 2},
+		{3, 3},
+		{4, 5},
+		{5, 8},
+		{6, 13},
+	}
+	for _, test := range tests {
+		assert.Equal(t, test.out, leetcode.ClimbStairs(test.in))
+	}
+
+}
