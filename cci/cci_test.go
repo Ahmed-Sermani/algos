@@ -24,3 +24,29 @@ func TestIsUnique(t *testing.T) {
 		assert.Equal(t, test.expected, cci.IsUnique4(test.input))
 	}
 }
+
+func TestCheckPermutations(t *testing.T) {
+	tests := []struct {
+		input    [2]string
+		expected bool
+	}{
+		{
+			[2]string{"ahmad", "maahd"}, true,
+		},
+		{
+			[2]string{"443322", "332244"}, true,
+		},
+		{
+			[2]string{"aasss", "aass"}, false,
+		},
+		{
+			[2]string{"03", "12"}, false,
+		},
+	}
+
+	for _, test := range tests {
+		assert.Equal(t, test.expected, cci.CheckPermutations(test.input[0], test.input[1]))
+		assert.Equal(t, test.expected, cci.CheckPermutations2(test.input[0], test.input[1]))
+		assert.Equal(t, test.expected, cci.CheckPermutations3(test.input[0], test.input[1]))
+	}
+}
