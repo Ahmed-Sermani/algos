@@ -102,3 +102,41 @@ func TestOneWay(t *testing.T) {
 		assert.Equal(t, test.expect, cci.OneWay1(test.s1, test.s2))
 	}
 }
+
+func TestStringCompression(t *testing.T) {
+	tests := []struct {
+		s      string
+		expect string
+	}{
+		{"aaabccccd", "a3b1c4d1"},
+		{"aaaaaaaaaab", "a10b1"},
+		{"AAAAABBBnn", "A5B3n2"},
+		{"John", "John"},
+	}
+	for _, test := range tests {
+		assert.Equal(t, test.expect, cci.StringCompression(test.s))
+	}
+}
+
+func TestRotateMatrix(t *testing.T) {
+	tests := []struct {
+		in     [][]int
+		expect [][]int
+	}{
+		{
+			[][]int{
+				{1, 2, 3},
+				{3, 4, 5},
+				{6, 7, 8},
+			},
+			[][]int{
+				{6, 3, 1},
+				{7, 4, 2},
+				{8, 5, 3},
+			},
+		},
+	}
+	for _, test := range tests {
+		assert.Equal(t, test.expect, cci.RotateMatrix(test.in))
+	}
+}
