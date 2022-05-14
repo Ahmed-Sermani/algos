@@ -140,3 +140,45 @@ func TestRotateMatrix(t *testing.T) {
 		assert.Equal(t, test.expect, cci.RotateMatrix(test.in))
 	}
 }
+
+func TestZeroMatrix(t *testing.T) {
+	tests := []struct {
+		in     [][]int
+		expect [][]int
+	}{
+		{
+			[][]int{
+				{1, 2, 3},
+				{1, 1, 1},
+				{1, 2, 0},
+			},
+			[][]int{
+				{1, 2, 0},
+				{1, 1, 0},
+				{0, 0, 0},
+			},
+		},
+		{
+			[][]int{
+				{1, 2, 3},
+				{1, 0, 1},
+				{1, 2, 1},
+			},
+			[][]int{
+				{1, 0, 3},
+				{0, 0, 0},
+				{1, 0, 1},
+			},
+		},
+	}
+	for _, test := range tests {
+		cp := make([][]int, len(test.in))
+		for i := range cp {
+			cp[i] = make([]int, len(test.in[i]))
+			copy(cp[i], test.in[i])
+		}
+		assert.Equal(t, test.expect, cci.ZeroMatrix(test.in))
+		assert.Equal(t, test.expect, cci.ZeroMatrix1(cp))
+	}
+
+}
