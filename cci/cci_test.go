@@ -182,3 +182,19 @@ func TestZeroMatrix(t *testing.T) {
 	}
 
 }
+
+func TestStringRotation(t *testing.T) {
+	tests := []struct {
+		s1     string
+		s2     string
+		expect bool
+	}{
+		{"watterbottle", "erbottlewatt", true},
+		{"abcd", "dabc", true},
+		{"one", "two", false},
+		{"333", "4444", false},
+	}
+	for _, test := range tests {
+		assert.Equal(t, test.expect, cci.StringRotation(test.s1, test.s2))
+	}
+}
