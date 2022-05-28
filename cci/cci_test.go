@@ -255,6 +255,42 @@ func TestRemoteDup2(t *testing.T) {
 	}
 }
 
+func TestKthToLast(t *testing.T) {
+	tests := []struct {
+		in        *structures.LinkedList[int]
+		k, expect int
+	}{
+		{
+			in:     buildLinkedListFromSlice([]int{1, 2, 4, 5}),
+			k:      0,
+			expect: 5,
+		},
+		{
+			in:     buildLinkedListFromSlice([]int{1, 2, 4, 5}),
+			k:      1,
+			expect: 4,
+		},
+		{
+			in:     buildLinkedListFromSlice([]int{1, 2, 4, 5}),
+			k:      2,
+			expect: 2,
+		},
+		{
+			in:     buildLinkedListFromSlice([]int{1, 2, 4, 5}),
+			k:      3,
+			expect: 1,
+		},
+	}
+	for _, test := range tests {
+		res, _ := cci.KthToLast(test.in, test.k)
+		res2, _ := cci.KthToLast2(test.in, test.k)
+		res3, _ := cci.KthToLast3(test.in, test.k)
+		assert.Equal(t, test.expect, res.Data)
+		assert.Equal(t, test.expect, res2.Data)
+		assert.Equal(t, test.expect, res3.Data)
+	}
+}
+
 func buildLinkedListFromSlice(arr []int) *structures.LinkedList[int] {
 	prevNode := &structures.Node[int]{
 		Data: arr[0],
