@@ -34,6 +34,7 @@ func RemoveDup2(l *structures.LinkedList[int]) {
 		return
 	}
 	var current, runner *structures.Node[int]
+	current = l.Head
 	for current != nil {
 		runner = current.Next
 		for runner != nil {
