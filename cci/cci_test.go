@@ -1,9 +1,11 @@
 package cci_test
 
 import (
+	"reflect"
 	"testing"
 
 	"github.com/Ahmed-Sermani/algos/cci"
+	"github.com/Ahmed-Sermani/algos/structures"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -197,4 +199,110 @@ func TestStringRotation(t *testing.T) {
 	for _, test := range tests {
 		assert.Equal(t, test.expect, cci.StringRotation(test.s1, test.s2))
 	}
+}
+
+func TestRemoteDup(t *testing.T) {
+	tests := []struct {
+		in, expect *structures.LinkedList[int]
+	}{
+		{
+			in:     buildLinkedListFromSlice([]int{1, 2, 3, 4}),
+			expect: buildLinkedListFromSlice([]int{1, 2, 3, 4}),
+		},
+		{
+			in:     buildLinkedListFromSlice([]int{1, 2, 3, 4, 4}),
+			expect: buildLinkedListFromSlice([]int{1, 2, 3, 4}),
+		},
+		{
+			in:     buildLinkedListFromSlice([]int{1, 2, 3, 3, 4}),
+			expect: buildLinkedListFromSlice([]int{1, 2, 3, 4}),
+		},
+		{
+			in:     buildLinkedListFromSlice([]int{1, 2, 1, 3, 4}),
+			expect: buildLinkedListFromSlice([]int{1, 2, 3, 4}),
+		},
+	}
+	for _, test := range tests {
+		cci.RemoveDup(test.in)
+		assert.True(t, reflect.DeepEqual(test.in, test.expect))
+	}
+}
+
+func TestRemoteDup2(t *testing.T) {
+	tests := []struct {
+		in, expect *structures.LinkedList[int]
+	}{
+		{
+			in:     buildLinkedListFromSlice([]int{1, 2, 3, 4}),
+			expect: buildLinkedListFromSlice([]int{1, 2, 3, 4}),
+		},
+		{
+			in:     buildLinkedListFromSlice([]int{1, 2, 3, 4, 4}),
+			expect: buildLinkedListFromSlice([]int{1, 2, 3, 4}),
+		},
+		{
+			in:     buildLinkedListFromSlice([]int{1, 2, 3, 3, 4}),
+			expect: buildLinkedListFromSlice([]int{1, 2, 3, 4}),
+		},
+		{
+			in:     buildLinkedListFromSlice([]int{1, 2, 1, 3, 4}),
+			expect: buildLinkedListFromSlice([]int{1, 2, 3, 4}),
+		},
+	}
+	for _, test := range tests {
+		cci.RemoveDup2(test.in)
+		assert.True(t, reflect.DeepEqual(test.in, test.expect))
+	}
+}
+
+func TestKthToLast(t *testing.T) {
+	tests := []struct {
+		in        *structures.LinkedList[int]
+		k, expect int
+	}{
+		{
+			in:     buildLinkedListFromSlice([]int{1, 2, 4, 5}),
+			k:      0,
+			expect: 5,
+		},
+		{
+			in:     buildLinkedListFromSlice([]int{1, 2, 4, 5}),
+			k:      1,
+			expect: 4,
+		},
+		{
+			in:     buildLinkedListFromSlice([]int{1, 2, 4, 5}),
+			k:      2,
+			expect: 2,
+		},
+		{
+			in:     buildLinkedListFromSlice([]int{1, 2, 4, 5}),
+			k:      3,
+			expect: 1,
+		},
+	}
+	for _, test := range tests {
+		res, _ := cci.KthToLast(test.in, test.k)
+		res2, _ := cci.KthToLast2(test.in, test.k)
+		res3, _ := cci.KthToLast3(test.in, test.k)
+		assert.Equal(t, test.expect, res.Data)
+		assert.Equal(t, test.expect, res2.Data)
+		assert.Equal(t, test.expect, res3.Data)
+	}
+}
+
+func buildLinkedListFromSlice(arr []int) *structures.LinkedList[int] {
+	prevNode := &structures.Node[int]{
+		Data: arr[0],
+	}
+	head := prevNode
+	for _, elem := range arr[1:] {
+		currNode := &structures.Node[int]{
+			Data: elem,
+			Prev: prevNode,
+		}
+		prevNode.Next = currNode
+		prevNode = currNode
+	}
+	return &structures.LinkedList[int]{Head: head}
 }
