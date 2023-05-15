@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "python-algos"
+version = "0.1.0"
+description = ""
+authors = ["Ahmed Sermani <33938701+Ahmed-Sermani@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "python_algos"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pytest = "^7.2.0"
+pytest-pudb = "^0.7.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
