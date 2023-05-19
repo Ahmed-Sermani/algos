@@ -1,11 +1,13 @@
 import pytest
 from ch2 import Node
+from ch2.intersection import intersection
 from ch2.palindrome import palindrome, palindrome_2, palindrome_3, palindrome_4
 from ch2.remove_dups import remove_dups, remove_dups_2
 from ch2.return_kth_last import return_kth_last, return_kth_last_2, return_kth_last_3
 from ch2.delete_middle_node import delete_middle_node
 from ch2.partition import partition
 from ch2.sum_lists import sum_list_recur, sum_lists
+from ch2.loop_detection import loop_detection
 
 def contruct_linked_list(*args):
     assert len(args) != 0
@@ -248,3 +250,66 @@ def test_palindrome_4():
 
     assert not palindrome_4(head)
 
+
+def test_intersection():
+    # Test case 1: No intersection
+    l1 = Node(1)
+    l1.next = Node(2)
+    l1.next.next = Node(3)
+
+    l2 = Node(4)
+    l2.next = Node(5)
+    l2.next.next = Node(6)
+
+    assert intersection(l1, l2) is None
+
+    # Test case 2: Intersection
+    l3 = Node(7)
+    l3.next = Node(8)
+    l3.next.next = l1.next  # Intersection at the node with value 2
+
+    assert intersection(l1, l3) is l1.next
+
+    # Test case 3: Empty lists
+    l4 = None
+    l5 = None
+
+    assert intersection(l4, l5) is None
+
+    # Test case 4: One empty list
+    assert intersection(l1, l4) is None
+    assert intersection(l4, l1) is None
+
+    # Test case 5: not equal length
+    
+    l1 = Node(1)
+    l1.next = Node(2)
+    l1.next.next = Node(3)
+    l1.next.next.next = Node(4)
+
+    l2 = Node(4)
+    l2.next = l1.next.next
+    
+    assert intersection(l1, l2) is l1.next.next
+
+def test_loop_detection():
+    l1 = Node(1)
+    l1.next = Node(2)
+    l1.next.next = Node(3)
+    l1.next.next.next = Node(4)
+    assert loop_detection(l1) is None
+
+
+    l1 = Node(1)
+    l1.next = Node(2)
+    l1.next.next = Node(3)
+    l1.next.next.next = Node(4)
+    l1.next.next.next.next = l1.next
+    assert loop_detection(l1) is l1.next
+    
+    l1 = Node(1)
+    l1.next = Node(2)
+    l1.next.next = Node(3)
+    l1.next.next.next = Node(4)
+    l1.next.next.next.next = l1.next.next.next
+    assert loop_detection(l1) is l1.next.next.next
