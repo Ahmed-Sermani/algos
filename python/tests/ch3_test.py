@@ -1,7 +1,9 @@
 
 
+from ch3 import Stack
 from ch3.min_stack import MinStack, MinStack2
 from ch3.queue_via_stacks import MyQueue
+from ch3.sort_stack import sort_stack
 from ch3.stack_of_plates import SetOfPlates
 
 
@@ -116,3 +118,29 @@ def test_queue_via_stacks():
     assert q.peek() == 2
 
 
+def test_sort_stack():
+    stack = Stack()
+    sorted_stack = sort_stack(stack)
+    assert sorted_stack.is_empty()
+
+    stack = Stack()
+    stack.push(5)
+    sorted_stack = sort_stack(stack)
+    assert not sorted_stack.is_empty()
+    assert sorted_stack.pop() == 5
+    assert sorted_stack.is_empty()
+
+    stack = Stack()
+    stack.push(5)
+    stack.push(3)
+    stack.push(1)
+    stack.push(4)
+    stack.push(2)
+    sorted_stack = sort_stack(stack)
+    assert not sorted_stack.is_empty()
+    assert sorted_stack.pop() == 1
+    assert sorted_stack.pop() == 2
+    assert sorted_stack.pop() == 3
+    assert sorted_stack.pop() == 4
+    assert sorted_stack.pop() == 5
+    assert sorted_stack.is_empty()
