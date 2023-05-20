@@ -1,6 +1,7 @@
 
 
 from ch3.min_stack import MinStack, MinStack2
+from ch3.queue_via_stacks import MyQueue
 from ch3.stack_of_plates import SetOfPlates
 
 
@@ -94,5 +95,24 @@ def test_set_of_plates():
     assert stack._SetOfPlates__stacks[1] == [5, 6]
 
 
+def test_queue_via_stacks():
+    q = MyQueue()
+    q.add(1)
+    q.add(2)
+    q.add(3)
+
+    assert q.remove() == 1
+    assert q.remove() == 2
+    q.add(4)
+    assert q.remove() == 3
+    assert q.remove() == 4
+
+    q = MyQueue()
+    q.add(1)
+    q.add(2)
+
+    assert q.peek() == 1
+    assert q.remove() == 1
+    assert q.peek() == 2
 
 
